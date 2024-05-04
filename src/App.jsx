@@ -4,6 +4,13 @@ import timeData from '../data.json'
 import avatar from '../images/image-jeremy.png'
 import ActivityCard from './ActivityCard'
 
+import work from '../images/icon-work.svg'
+import play from '../images/icon-play.svg'
+import study from '../images/icon-study.svg'
+import exercise from '../images/icon-exercise.svg'
+import social from '../images/icon-social.svg'
+import selfcare from '../images/icon-self-care.svg'
+
 function App() {
   const [data, setData] = useState(null)
   const [timeFrame, setTimeFrame] = useState('Daily')
@@ -29,7 +36,7 @@ function App() {
     }
   }
   // {{ timeframe === 'Daily' ? 'active bg-indigo-500 text-white' : '' }}
-  const colors =['#ff8c66', '#56c2e6', '#ff5c7c', '#4acf81', '#7536d3','#f1c65b']
+  const icons = [work, play, study, exercise, social, selfcare]
 
   return (
     data == null ? (
@@ -52,7 +59,7 @@ function App() {
         <section className="border-2 border-gray-300 grid grid-cols-3 gap-4">
 
           {data.map((Activity, index) => (
-            <ActivityCard key={Activity.title} title={Activity.title} currentHours={Activity.timeframes[`${timeFrame.toLocaleLowerCase()}`].current} previousHours={Activity.timeframes[`${timeFrame.toLocaleLowerCase()}`].previous} previousTimePeriod={previousTimePeriod} color={colors[index]} />
+            <ActivityCard key={Activity.title} title={Activity.title} currentHours={Activity.timeframes[`${timeFrame.toLocaleLowerCase()}`].current} previousHours={Activity.timeframes[`${timeFrame.toLocaleLowerCase()}`].previous} previousTimePeriod={previousTimePeriod} color={Activity.color} icon={icons[index]} />
           ))}
         </section>
 

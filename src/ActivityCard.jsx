@@ -1,16 +1,20 @@
-
-const ActivityCard = ({ title, currentHours, previousHours, previousTimePeriod, color }) => {
+import ellipsis from '../images/icon-ellipsis.svg'
+const ActivityCard = ({ title, currentHours, previousHours, previousTimePeriod, color, icon }) => {
     return (
-        <div className={`rounded-md border-2 p-4 border-gray-800 bg-[#${color}]`}>
-            <div className="bg-[#1c1f4a]">
-                <h4>
-                    {title}
-                </h4>
-                <h1>
+        <div className={`rounded-lg border-2 border-red-500 bg-${color} relative w-48`}>
+            <img src={icon} alt="activity-icon" />
+            <div className="rounded-lg w-full bg-[#1c1f4a] hover:bg-[#5847eb] hover:cursor-pointer absolute bottom-0 top-5 p-4">
+                <div className="flex justify-between items-center">
+                    <h4 className="mb-4">
+                        {title}
+                    </h4>
+                    <img src={ellipsis} alt="ellipsis" />
+                </div>
+                <h1 className="text-4xl mb-4">
                     {currentHours}hrs
                 </h1>
                 <p>
-                   {previousTimePeriod} - {previousHours}hrs
+                    {previousTimePeriod} - {previousHours}hrs
                 </p>
             </div>
         </div>
